@@ -1,0 +1,17 @@
+apiVersion: v1beta3
+kind: Pod
+metadata:
+  label:
+    name: pvtest
+  name: pvtest
+spec:
+  containers:
+    - image: gcr.io/v1/repositories/linear-pointer-95422/pvtest:v1.0.1
+      name: pvtest
+      volumeMounts:
+        - mountPath: /host_tmp
+          name: host-tmp
+  volumes:
+    - name: host-tmp
+      hostPath:
+        path: /tmp
